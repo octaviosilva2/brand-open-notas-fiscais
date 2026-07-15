@@ -44,11 +44,12 @@ month-to-month issuance is mostly "confirm and send."
 - **Context** — a real accounting/fiscal workflow with a strict external contract (the
   Betha SOAP API and the municipality's XML schema) — little room for "close enough,"
   since a malformed `infDPS` is rejected by the city.
-- **AI-Workflow** — built with Claude Code from a written scope doc (`docs/escopo.md`)
-  and incremental specs/plans per feature (auth, recurring invoices, the cron scheduler,
-  the Betha integration itself) before implementation — each spec pinned down exact
-  field mappings and XML structure ahead of writing code, given how unforgiving the
-  external contract is.
+- **AI-Workflow** — built collaboratively with Kauan: Octavio wrote the scope doc
+  (`docs/escopo.md`) and drove the incremental specs/plans per feature (auth, recurring
+  invoices, the cron scheduler, the Betha integration itself) — each spec pinned down
+  exact field mappings and XML structure ahead of implementation, given how unforgiving
+  the external contract is. Kauan led the implementation, Octavio also ran some
+  sessions with Claude Code and shipped a few pieces directly.
 - **Architecture** — certificate handling kept out of application code entirely (loaded
   from an env-configured path at runtime) specifically so the fiscal-signing logic could
   be unit-tested without ever touching a real certificate.
@@ -119,11 +120,12 @@ para que a emissão mês a mês seja, na prática, "conferir e enviar".
 - **Context** — um fluxo fiscal/contábil real com contrato externo rígido (a API SOAP da
   Betha e o schema XML da prefeitura) — pouco espaço para "quase certo", já que um
   `infDPS` malformado é rejeitado pela prefeitura.
-- **AI-Workflow** — construído com Claude Code a partir de um documento de escopo por
-  escrito (`docs/escopo.md`) e specs/planos incrementais por feature (auth, notas
-  recorrentes, o agendador cron, a própria integração Betha) antes da implementação —
-  cada spec fixava o mapeamento exato de campos e a estrutura XML antes de escrever
-  código, dado o quão rígido é o contrato externo.
+- **AI-Workflow** — construído em conjunto com o Kauan: Octavio escreveu o documento de
+  escopo (`docs/escopo.md`) e definiu as specs/planos incrementais por feature (auth,
+  notas recorrentes, o agendador cron, a própria integração Betha) — cada spec fixava o
+  mapeamento exato de campos e a estrutura XML antes da implementação, dado o quão
+  rígido é o contrato externo. O Kauan liderou a implementação, e Octavio também rodou
+  algumas sessões com Claude Code e entregou algumas partes diretamente.
 - **Architecture** — o tratamento do certificado ficou inteiramente fora do código de
   aplicação (carregado de um caminho configurado via env em runtime) especificamente
   para que a lógica de assinatura fiscal pudesse ser testada sem nunca tocar num
