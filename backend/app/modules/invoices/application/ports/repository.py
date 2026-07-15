@@ -1,0 +1,19 @@
+# app/modules/invoices/application/ports/repository.py
+import uuid
+from datetime import date
+from typing import Protocol
+
+from app.modules.invoices.domain.entities import Invoice, NewInvoice, UpdateInvoice
+
+
+class InvoicesRepositoryProtocol(Protocol):
+    async def get_by_id(self, id_: uuid.UUID) -> Invoice: ...
+    async def get_by_id_or_none(self, id_: uuid.UUID) -> Invoice | None: ...
+    async def get_with_client_name(self, id_: uuid.UUID) -> tuple[Invoice, str]: ...
+    async def create(self, create_command: NewInvoice) -> Invoice: ...
+    async def update(
+        self, id_: uuid.UUID, update_command: UpdateInvoice
+    ) -> Invoice: ...
+    async def get_by_recurrence_and_date(
+        self, recurrence_id: uuid.UUID, scheduled_date: date
+    ) -> Invoice | None: ...
